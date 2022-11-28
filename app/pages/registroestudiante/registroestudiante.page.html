@@ -1,0 +1,78 @@
+<ion-header>
+  <!-- TOOLBAR -->
+  <ion-toolbar color="colortoolbar">
+    <!-- HAMBURGUESA -->
+    <ion-buttons slot="start">
+      <ion-button (click)="mostrarMenu()">
+        <ion-icon slot="start" name="menu-outline" color="primary"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <!-- BOTON PARA VOLVER ATRAS -->
+    <ion-buttons slot="end">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+
+    <ion-title>Registro Estudiante</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+  <ion-card>
+    <ion-card-content>
+
+
+      <ion-card-title class="titulo">
+        Ingrese sus Datos
+      </ion-card-title>
+
+      <br>
+      <ion-item>
+        <img src="assets/regestudiante.png" class="transparencia">
+      </ion-item>
+      <!-- formulario -->
+      <ion-card-content>
+        <form [formGroup]="formularioRegistro" (keyup.enter)="guardar()">
+
+          <!-- USUARIO -->
+          <ion-item>
+            <ion-label position="floating">Usuario: </ion-label>
+            <ion-input type="text" formControlName="usuarioestudiante"></ion-input>
+          </ion-item>
+
+          <!-- CONTRASEÑA -->
+          <ion-item>
+            <ion-label position="floating">Contraseña: </ion-label>
+            <ion-input formControlName="password" type="password"></ion-input>
+          </ion-item>
+
+          <!-- confirmacion password -->
+          <ion-item>
+            <ion-label position="floating">Confirmar contraseña: </ion-label>
+            <ion-input formControlName="confirmacionPassword" type="password"></ion-input>
+          </ion-item>
+
+          <!-- CORREO -->
+          <ion-item>
+            <ion-label position="floating">Correo: </ion-label>
+            <ion-input formControlName="correo" type="email"></ion-input>
+          </ion-item>
+
+          <!-- PERFIL USUARIO -->
+          <ion-item>
+            <ion-label position="floating">Perfil usuario: </ion-label>
+            <ion-input formControlName="perfilUsuario" type="text"></ion-input>
+          </ion-item>
+
+        </form>
+        <br>
+
+        <ion-button (click)="guardar()" expand="full" fill="solid" shape="round">
+          Registrarse
+        </ion-button>
+      </ion-card-content>
+
+
+    </ion-card-content>
+  </ion-card>
+</ion-content>

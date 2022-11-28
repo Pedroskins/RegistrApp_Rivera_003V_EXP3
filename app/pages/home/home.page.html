@@ -1,0 +1,40 @@
+<ion-header>
+  <!-- TOOLBAR -->
+  <ion-toolbar color="colortoolbar">
+    <ion-buttons slot="start">
+      <ion-button (click)="mostrarMenu()">
+        <ion-icon slot="start" name="menu-outline" color="primary"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Home</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-card-content>
+
+      <ion-item>
+        <img src="assets/logo.png" class="ion-padding">
+      </ion-item>
+
+      <ion-card-header class="alinear">
+        <ion-card-title>Bienvenido/a</ion-card-title>
+        <ion-card-subtitle>Seleccione un perfíl:</ion-card-subtitle>
+      </ion-card-header>
+
+      <!-- BOTON DOCENTE -->
+      <ion-button [routerLink]="['/perfildocente']" expand="full" fill="solid" shape="round">
+        Docente
+      </ion-button>
+      <br>
+      <!-- BOTON ESTUDIANTE -->
+      <ion-button [routerLink]="['/perfilestudiante']" expand="full" fill="solid" shape="round">
+        Estudiante
+      </ion-button>
+
+
+
+    </ion-card-content>
+  </ion-card>
+</ion-content>

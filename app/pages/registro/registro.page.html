@@ -1,0 +1,158 @@
+<ion-header>
+  <!-- TOOLBAR -->
+  <ion-toolbar color="colortoolbar">
+    <!-- HAMBURGUESA -->
+    <ion-buttons slot="start">
+      <ion-button (click)="mostrarMenu()">
+        <ion-icon slot="start" name="menu-outline" color="primary"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <!-- BOTON PARA VOLVER ATRAS -->
+    <ion-buttons slot="end">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+
+    <ion-title>Registro Docente</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-card-content>
+
+
+      <ion-card-title class="titulo">
+        Ingrese sus Datos
+      </ion-card-title>
+      <br>
+      <ion-item>
+        <img src="assets/regdocente.png" class="ion-padding">
+      </ion-item>
+      <!-- formulario -->
+      <ion-card-content>
+        <form [formGroup]="formularioRegistro" (keyup.enter)="formularioRegistro()">
+
+          <!--                      USUARIO                      -->
+          <ion-item>
+            <ion-label position="floating">Usuario: </ion-label>
+            <ion-input type="text" formControlName="usuario"></ion-input>
+            <!-- campo vacio -->
+            <div
+              *ngIf="formularioRegistro.get('usuario').hasError('required')  && (formularioRegistro.get('usuario').touched || formularioRegistro.get('usuario').dirty)">
+              El usuario no puede estar vacio..
+            </div>
+            <!-- minLength -->
+            <div
+              *ngIf="formularioRegistro.get('usuario').hasError('minlength')  && (formularioRegistro.get('usuario').touched || formularioRegistro.get('usuario').dirty)">
+              El usuario debe contener como min. 4 caracteres..
+            </div>
+            <!-- maxLength -->
+            <div
+              *ngIf="formularioRegistro.get('usuario').hasError('maxlength')  && (formularioRegistro.get('usuario').touched || formularioRegistro.get('usuario').dirty)">
+              El usuario debe contener como max. 12 caracteres..
+            </div>
+
+          </ion-item>
+
+          <!--                     CONTRASEÑA                      -->
+          <ion-item>
+            <ion-label position="floating">Contraseña: </ion-label>
+            <ion-input formControlName="password" type="password"></ion-input>
+            <!-- campo vacio -->
+            <div
+              *ngIf="formularioRegistro.get('password').hasError('required')  && (formularioRegistro.get('password').touched || formularioRegistro.get('password').dirty)">
+              La contraseña no puede estar vacia..
+            </div>
+            <!-- minLength -->
+            <div
+              *ngIf="formularioRegistro.get('password').hasError('minlength')  && (formularioRegistro.get('password').touched || formularioRegistro.get('password').dirty)">
+              La contraseña debe contener como min. 4 caracteres..
+            </div>
+            <!-- maxLength -->
+            <div
+              *ngIf="formularioRegistro.get('password').hasError('maxlength')  && (formularioRegistro.get('password').touched || formularioRegistro.get('password').dirty)">
+              La contraseña debe contener como max. 15 caracteres..
+            </div>
+          </ion-item>
+
+          <!--                     CONFIRMACION PASSWORD                     -->
+          <ion-item>
+            <ion-label position="floating">Confirmar contraseña: </ion-label>
+            <ion-input formControlName="confirmacionPassword" type="password"></ion-input>
+            <!-- campo vacio -->
+            <div
+              *ngIf="formularioRegistro.get('confirmacionPassword').hasError('required')  && (formularioRegistro.get('confirmacionPassword').touched || formularioRegistro.get('confirmacionPassword').dirty)">
+              La contraseña no puede estar vacio..
+            </div>
+            <!-- minLength -->
+            <div
+              *ngIf="formularioRegistro.get('confirmacionPassword').hasError('minlength')  && (formularioRegistro.get('confirmacionPassword').touched || formularioRegistro.get('confirmacionPassword').dirty)">
+              La contraseña debe contener como min. 4 caracteres..
+            </div>
+            <!-- maxLength -->
+            <div
+              *ngIf="formularioRegistro.get('confirmacionPassword').hasError('maxlength')  && (formularioRegistro.get('confirmacionPassword').touched || formularioRegistro.get('confirmacionPassword').dirty)">
+              La contraseña debe contener como max. 15 caracteres..
+            </div>
+            <!-- VALIDACION QUE LAS PASSWORDS SON IGUALES -->
+            <div
+              *ngIf="formularioRegistro.get('confirmacionPassword').touched || formularioRegistro.get('confirmacionPassword').dirty && (formularioRegistro.get('password') !== formularioRegistro.get('confirmacionPassword'))">
+              La contraseña deben ser iguales..
+            </div>
+
+          </ion-item>
+
+          <!--                      CORREO                      -->
+          <ion-item>
+            <ion-label position="floating">Correo: </ion-label>
+            <ion-input formControlName="correo" type="email"></ion-input>
+            <!-- campo vacio -->
+            <div
+              *ngIf="formularioRegistro.get('correo').hasError('required')  && (formularioRegistro.get('correo').touched || formularioRegistro.get('correo').dirty)">
+              El correo no puede estar vacio..
+            </div>
+            <!-- minLength -->
+            <div
+              *ngIf="formularioRegistro.get('correo').hasError('minlength')  && (formularioRegistro.get('correo').touched || formularioRegistro.get('correo').dirty)">
+              El correo debe contener como min. 4 caracteres..
+            </div>
+            <!-- maxLength -->
+            <div
+              *ngIf="formularioRegistro.get('correo').hasError('maxlength')  && (formularioRegistro.get('correo').touched || formularioRegistro.get('correo').dirty)">
+              El correo debe contener como max. 30 caracteres..
+            </div>
+          </ion-item>
+
+          <!--                      PERFIL USUARIO                      -->
+          <ion-item>
+            <ion-label position="floating">Perfil usuario: </ion-label>
+            <ion-input formControlName="perfilUsuario" type="text"></ion-input>
+            <!-- campo vacio -->
+            <div
+              *ngIf="formularioRegistro.get('perfilUsuario').hasError('required')  && (formularioRegistro.get('perfilUsuario').touched || formularioRegistro.get('perfilUsuario').dirty)">
+              El perfíl de usuario no puede estar vacio..
+            </div>
+            <!-- minLength -->
+            <div
+              *ngIf="formularioRegistro.get('perfilUsuario').hasError('minlength')  && (formularioRegistro.get('perfilUsuario').touched || formularioRegistro.get('perfilUsuario').dirty)">
+              El perfíl de usuario debe contener como min. 4 caracteres..
+            </div>
+            <!-- maxLength -->
+            <div
+              *ngIf="formularioRegistro.get('perfilUsuario').hasError('maxlength')  && (formularioRegistro.get('perfilUsuario').touched || formularioRegistro.get('perfilUsuario').dirty)">
+              El perfíl de usuario debe contener como max. 12 caracteres..
+            </div>
+          </ion-item>
+
+        </form>
+        <br>
+
+        <ion-button (click)="CrearUsuario()" expand="full" fill="solid" shape="round">
+          Registrarse
+        </ion-button>
+      </ion-card-content>
+
+
+    </ion-card-content>
+  </ion-card>
+</ion-content>
